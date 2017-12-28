@@ -1,0 +1,228 @@
+inherit kde3
+
+NAME="kdelibs3"
+VERSION=3.5.10
+RELEASE=11
+CATEGORY="KDE"
+SUMMARY="KDE 3 libraries"
+DESCRIPTION="This package includes libraries that are central to the
+development and execution of a KDE program, as well as internationalization
+files for these libraries, misc HTML documentation, theme modules, and
+regression tests."
+
+PATCH_URI="
+	fedora/kdelibs-3.5.1-xdg-menu.patch
+	fedora/kdelibs-3.0.0-ndebug.patch
+	fedora/kdelibs-3.0.4-ksyscoca.patch
+	fedora/kdelibs-3.5.10-openssl.patch
+	fedora/kdelibs-3.4.91-buildroot.patch
+	fedora/kdelibs-3.2.3-cups.patch
+	fedora/kdelibs-3.3.2-ppc.patch
+	fedora/kdelibs-3.4.0-qtdoc.patch
+	fedora/kdelibs-3.4.92-inttype.patch
+	fedora/kdelibs-3.5.2-kdebug-kmail-quiet.patch
+	fedora/kdelibs-3.5.2-cupsdconf2-group.patch
+	fedora/kdelibs-3.5.4-kabc-make.patch
+	fedora/kdelibs-3.5.4-kdeprint-utf8.patch
+	fedora/kdelibs-3.5.6-utempter.patch
+	fedora/kdelibs-3.5.6-lang.patch
+	fedora/kdelibs-3.5.7-autostart.patch
+	fedora/kdelibs-3.5.8-kate-vhdl.patch
+	fedora/kdelibs-3.5.8-kspell-hunspell.patch
+	fedora/kdelibs-3.5.8-kspell2-enchant.patch
+	fedora/kdelibs-3.5.8-kspell2-no-ispell.patch
+	fedora/kdelibs-3.5.9-cupsserverbin.patch
+	fedora/kdelibs-3.5.9-KDE3.patch
+	fedora/kdelibs-3.5.10-drkonqi-plasma5.patch
+	fedora/kdelibs-3.5.10-inotify.patch
+	fedora/kdelibs-3.5.10-latex-syntax-kile-2.0.3.patch
+	fedora/kdelibs-3.5.10-qcolor_gcc_ftbfs.patch
+	fedora/kdelibs-3.5.10-cups-util-missing-header.patch
+	fedora/kdelibs-3.5.10-cups20.patch
+	fedora/kdelibs-3.5.10-gcc6.patch
+	fedora/kdelibs-3.5.10-svgicon-endlessloop.patch
+	fedora/kdelibs-3.5.10-gcc7.patch
+	fedora/kdelibs-3-libidn2.patch
+	fedora/kdelibs-3.5.5-kstandarddirs.patch
+	fedora/kde-3.5-libtool-shlibext.patch
+	fedora/kdelibs-3.5.0-101956.patch
+	fedora/kdelibs-3.5.10-gcc44.patch
+	fedora/kdelibs-3.5.10-ossl-1.x.patch
+	fedora/kdelibs-3.5.10-kio.patch
+	fedora/kdelibs-3.5.10-assert.patch
+	fedora/kdelibs-3.5.10-dtoa.patch
+	fedora/kdelibs-3.5.10-kabc.patch
+	fedora/kdelibs-3.5.10-kde-config_kde-version.patch
+	fedora/kdelibs-3.5.10-cups16.patch
+	fedora/kdelibs-3.5.10-cups22.patch
+	fedora/kdelibs-3.5.10-cve-2009-2537-select-length.patch
+	fedora/kdelibs-3.5.10-cve-2009-1725.patch
+	fedora/kdelibs-3.5.4-CVE-2009-1687.patch
+	fedora/kdelibs-3.5.4-CVE-2009-1690.patch
+	fedora/kdelibs-3.5.10-cve-2009-1698.patch
+	fedora/kdelibs-3.5.10-CVE-2009-2702.patch
+	fedora/kdelibs-3.5.10-oCERT-2009-015-xmlhttprequest.patch
+	fedora/libltdl-CVE-2009-3736.patch
+	fedora/kdelibs-3.5.x-CVE-2011-3365.patch
+	fedora/kdelibs-3.5.10-CVE-2013-2074.patch
+	fedora/kdelibs-3.5.10-CVE-2015-7543.patch
+	fedora/kdelibs-3.5.10-CVE-2016-6232.patch
+	fedora/kdelibs-3.5.10-CVE-2017-6410.patch
+	fedora/kde3-acinclude.patch
+	fedora/kde3-automake-version.patch
+	fedora/kde3-automake-add-missing.patch
+	3.5.9-no-undefined.patch
+	3.5.9-kded.patch
+	3.5.10-parallel-make.patch
+	3.5.10-ltdl-cygwin.patch
+	3.5.9-openssl.patch
+	3.5.10-ftm.patch
+	3.5.10-cygwin-posix.patch
+"
+
+PKG_NAMES="libkdecore4 libkdecore4-devel crystalsvg-icons"
+libkdecore4_REQUIRES="ca-certificates crystalsvg-icons libkdecore-common libopenssl100 rgb"
+libkdecore4_CONTENTS="
+	--exclude=checkXML --exclude=dcopidl* --exclude=kconfig_compiler.exe
+	--exclude=ksvgtopng.exe --exclude=kunittestmodrunner.exe
+	--exclude=makekdewidgets.exe --exclude=preparetips
+	--exclude=devel
+	etc/xdg/
+	usr/bin/*
+	usr/lib/kde3/
+	usr/share/applications/kde/
+	usr/share/apps/
+	usr/share/config/
+	usr/share/doc/HTML/en/common/
+	usr/share/doc/HTML/en/kspell/
+	usr/share/doc/${NAME}
+	usr/share/emoticons/
+	usr/share/icons/default.kde
+	usr/share/mimelnk/
+	usr/share/services/
+	usr/share/servicetypes/
+"
+crystalsvg_icons_OBSOLETES="kde-icons-crystalsvg"
+crystalsvg_icons_CONTENTS="
+	etc/postinstall/*
+	etc/preremove/*
+	usr/share/icons/crystalsvg/
+"
+libkdecore4_devel_CONTENTS="
+	usr/bin/dcopidl*
+	usr/bin/kconfig_compiler.exe
+	usr/bin/makekdewidgets.exe
+	usr/include/kde3/
+	usr/lib/kde3/devel/
+	usr/lib/lib*.la
+	usr/lib/libkdefakes_nonpic.a
+	usr/share/apps/dcopidlng/
+"
+
+DO_NOT_COMPILE="libkscreensaver"
+
+CXXFLAGS+=" -Wno-deprecated-declarations"
+
+src_compile() {
+	local kded
+
+	cd ${S}
+	kde3_autoreconf
+
+	cd ${B}
+	kde3_compile \
+		--disable-cups \
+		--disable-dnotify --disable-inotify \
+		--disable-dnssd \
+		--disable-fast-malloc \
+		--enable-libfam \
+		--enable-mitshm \
+		--enable-pcre \
+		--without-alsa \
+		--without-aspell --without-hspell \
+		--with-gssapi \
+		--with-jasper --with-libart --with-openexr --with-tiff \
+		--with-libidn \
+		--without-libthai \
+		--without-lua \
+		--with-rgbfile=/usr/share/X11/rgb.txt
+
+	# these have to be built out of order due to kded dependency
+	for kded in kdeui/kdetrayproxy kio/kpasswdserver kio/misc/kpac \
+                    kio/misc/kssld kio/misc/kwalletd
+	do
+		cygmake -C ${B}/${kded}
+	done
+}
+
+src_install() {
+	local kded
+
+	for kded in kdeui/kdetrayproxy kio/kpasswdserver kio/misc/kpac \
+                kio/misc/kssld kio/misc/kwalletd
+	do
+		cd ${B}/${kded}
+		kde3_install
+	done
+
+	cd ${B}
+	kde3_install
+
+	# use system ca-certifcates
+        rm -f ${D}/usr/share/apps/kssl/ca-bundle.crt
+	dosym /etc/pki/tls/certs/ca-bundle.crt /usr/share/apps/kssl/ca-bundle.crt
+
+	# fix collisions with gnome-menus, hicolor-icon-theme
+	mv ${D}/etc/xdg/menus/{,kde-}applications.menu
+	rm ${D}/usr/share/icons/hicolor/index.theme
+
+	# remove conflicts with kdelibs-4
+	rm -f ${D}/usr/bin/checkXML
+	rm -fv ${D}/usr/bin/kmailservice.exe
+	rm -fv ${D}/usr/bin/ksvgtopng.exe
+	rm -fv ${D}/usr/bin/ktelnetservice.exe
+	rm -f ${D}/usr/bin/kunittestmodrunner.exe
+	rm -f ${D}/usr/share/doc/HTML/en/common/1.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/10.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/2.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/3.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/4.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/5.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/6.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/7.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/8.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/9.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/artistic-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/bottom-left.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/bottom-middle.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/bottom-right.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/bsd-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/doxygen.css
+	rm -f ${D}/usr/share/doc/HTML/en/common/favicon.ico
+	rm -f ${D}/usr/share/doc/HTML/en/common/fdl-license
+	rm -f ${D}/usr/share/doc/HTML/en/common/fdl-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/fdl-notice.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/footer.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/gpl-license
+	rm -f ${D}/usr/share/doc/HTML/en/common/gpl-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/header.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/kde-default.css
+	rm -f ${D}/usr/share/doc/HTML/en/common/kde_logo_bg.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/lgpl-license
+	rm -f ${D}/usr/share/doc/HTML/en/common/lgpl-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/mainfooter.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/mainheader.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/qpl-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/top-left.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/top-middle.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/top-right-konqueror.png
+	rm -f ${D}/usr/share/doc/HTML/en/common/top-right.jpg
+	rm -f ${D}/usr/share/doc/HTML/en/common/x11-license.html
+	rm -f ${D}/usr/share/doc/HTML/en/common/xml.dcl
+	rm -rf ${D}/usr/share/locale/all_languages
+	rm -rf ${D}/usr/share/autostart/
+	rm -f ${D}/usr/bin/preparetips
+
+	# don't show kresources
+	sed -i -e "s,^OnlyShowIn=KDE;,OnlyShowIn=KDE3;," ${D}/usr/share/applications/kde/kresources.desktop
+}

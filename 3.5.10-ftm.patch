@@ -1,0 +1,10 @@
+--- origsrc/kdelibs-3.5.10/kdecore/kpty.cpp	2017-12-25 22:50:36.986888800 -0600
++++ src/kdelibs-3.5.10/kdecore/kpty.cpp	2017-12-25 23:13:24.248590400 -0600
+@@ -21,6 +21,7 @@
+    Boston, MA 02110-1301, USA.
+ */
+ 
++#define _XOPEN_SOURCE
+ #include <config.h>
+ 
+ #include "kpty.h"
